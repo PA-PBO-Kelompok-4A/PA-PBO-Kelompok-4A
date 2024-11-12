@@ -1,19 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 import java.io.File;
 import java.io.IOException;
-import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
-import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author acer
- */
 public class Report {
     private int id;
     private String reportType;

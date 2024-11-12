@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import java.awt.Image;
@@ -21,10 +17,6 @@ import javax.swing.table.DefaultTableModel;
 import model.Database;
 import model.Report;
 
-/**
- *
- * @author Zonaats
- */
 public class AdminMenu extends javax.swing.JFrame {
     private File image;
     DefaultTableModel tableModel;

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import java.awt.Image;
@@ -16,22 +12,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import model.Database;
 
-/**
- *
- * @author Zonaats
- */
 public class UserReadReport extends javax.swing.JFrame {
     private int userId;
     DefaultTableModel tableModel = new DefaultTableModel();
     private BufferedImage displayedImage;
     private double zoomFactor = 1.0;
     private JLabel imageLabel;
-    /**
-     * Creates new form LihatLaporan
-     */
+
     public UserReadReport(int userId) {
         initComponents();
         table();

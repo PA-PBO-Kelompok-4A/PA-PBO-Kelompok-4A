@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import java.io.File;
@@ -9,16 +5,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import model.Report;
 
-/**
- *
- * @author Zonaats
- */
 public class UserAddReportMenu extends javax.swing.JFrame {
     private int userId;
     private File image;
-    /**
-     * Creates new form Dashboard
-     */
+
     public UserAddReportMenu(int userId) {
         initComponents();
         this.userId = userId;

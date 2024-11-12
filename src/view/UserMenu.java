@@ -1,19 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-/**
- *
- * @author Zonaats
- */
 public class UserMenu extends javax.swing.JFrame {
     private int userId;
 
-    /**
-     * Creates new form User
-     */
     public UserMenu(int userId) {
         initComponents();
         this.userId = userId;
