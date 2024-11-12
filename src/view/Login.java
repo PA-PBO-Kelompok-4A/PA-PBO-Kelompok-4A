@@ -202,20 +202,24 @@ public class Login extends javax.swing.JFrame {
             if (email.equals("") || password.equals("")) {
                 JOptionPane.showMessageDialog(null, "Email dan Password tidak boleh kosong!");
             } else {
-                if (User.loginAccount(email, password)) {
-                    int userId = User.getUserID(email, password);
-                    UserMenu userMenu = new UserMenu(userId);
-                    userMenu.setVisible(true);
-                    userMenu.setLocationRelativeTo(null);
-                    this.dispose();
+                if (User.checkEmail(email)) {
+                    if (User.loginAccount(email, password)) {
+                        int userId = User.getUserID(email, password);
+                        UserMenu userMenu = new UserMenu(userId);
+                        userMenu.setVisible(true);
+                        userMenu.setLocationRelativeTo(null);
+                        this.dispose();
+                    }  else {
+                        JOptionPane.showMessageDialog(null, "Password Salah!");
+                    }
                 } else if (Admin.loginAdmin(email, password)) {
                     AdminMenu adminMenu = new AdminMenu();
                     adminMenu.setVisible(true);
                     adminMenu.setLocationRelativeTo(null);
                     this.dispose();
-                }  
+                } 
                 else {
-                    JOptionPane.showMessageDialog(null, "Email dan password salah!");
+                    JOptionPane.showMessageDialog(null, "Email belum terdaftar!");
                 }
             }
         } catch (Exception e) {

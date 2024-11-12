@@ -6,7 +6,7 @@ package view;
 
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import model.Database;
+import model.Admin;
 import model.User;
 
 /**
@@ -214,7 +214,7 @@ public class Register extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Data yang dimasukkan tidak boleh kosong!");
             } else{
                 if (User.emailFormatValidation(email)) {
-                    if (!User.checkEmail(email)) {
+                    if (!User.checkEmail(email) && !Admin.checkEmail(email)) {
                         User user = new User(email, password, fullName);
                         user.createAccount();
                         JOptionPane.showMessageDialog(null, "Akun berhasil didaftarkan! Silahkan login");

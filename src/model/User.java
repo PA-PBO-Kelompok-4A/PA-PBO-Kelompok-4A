@@ -68,7 +68,7 @@ public class User extends Account{
         } catch (SQLException e) {
         }
         return false;
-    } 
+    }
     
     final public static Integer getUserID(String email, String password){
         try {

@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author acer
@@ -23,6 +25,23 @@ public class Admin extends Account {
             Database.preparedStatement.setString(1, email);
             Database.preparedStatement.setString(2, password);
             
+            Database.resultSet = Database.preparedStatement.executeQuery();
+            if (Database.resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+        }
+        return false;
+    }
+    
+    final public static boolean checkEmail(String email) {
+        try {
+            String query = "SELECT * FROM admin WHERE email = ?";
+            
+            Database.preparedStatement = Database.connection.prepareStatement(query);
+            Database.preparedStatement.setString(1, email);
             Database.resultSet = Database.preparedStatement.executeQuery();
             if (Database.resultSet.next()) {
                 return true;
