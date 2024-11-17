@@ -270,7 +270,6 @@ public class UserAddReportMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_laporkanButtonActionPerformed
 
     private void locationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationButtonActionPerformed
-        map = new WorldMap();
         map.setVisible(true);
         map.setLocationRelativeTo(null);
     }//GEN-LAST:event_locationButtonActionPerformed
