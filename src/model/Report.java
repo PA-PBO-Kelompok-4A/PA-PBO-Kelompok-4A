@@ -12,14 +12,18 @@ public class Report {
     private String status;
     private File image;
     private int userId;
+    private double latitude;
+    private double longitude;
     
-    public Report(String reportType, String reportDescription, String location, String status, File image, int userId) throws IOException{
+    public Report(String reportType, String reportDescription, String location, String status, File image, int userId, double latitude, double longitude) throws IOException{
         this.reportType = reportType;
         this.reportDescription = reportDescription;
         this.location = location;
         this.status = status;
         this.image = image;
         this.userId = userId;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
     
     public Report(String reportType, String reportDescription, String location, String status, File image) throws IOException{
@@ -71,7 +75,7 @@ public class Report {
         try {
             FileInputStream imageFileInput = new FileInputStream(this.getImage());
             
-            String query = "INSERT INTO laporan (jenis_laporan, isi_laporan, lokasi, status, gambar_lokasi, user_id_user) VALUES (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO laporan (jenis_laporan, isi_laporan, lokasi, status, gambar_lokasi, latitude, longitude, user_id_user) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             
             Database.preparedStatement = Database.connection.prepareStatement(query);
             
@@ -80,7 +84,9 @@ public class Report {
             Database.preparedStatement.setString(3, getLocation());
             Database.preparedStatement.setString(4, getStatus());
             Database.preparedStatement.setBinaryStream(5, imageFileInput, (int) this.getImage().length());
-            Database.preparedStatement.setInt(6, getUserId());
+            Database.preparedStatement.setDouble(6, this.latitude);
+            Database.preparedStatement.setDouble(7, this.longitude);
+            Database.preparedStatement.setInt(8, getUserId());
             
             Database.preparedStatement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Berhasil menambah data!");

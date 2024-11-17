@@ -65,6 +65,7 @@ public class AdminMenu extends javax.swing.JFrame {
         refreshButton = new javax.swing.JButton();
         reportStatusComboBox = new javax.swing.JComboBox<>();
         uploadLabel = new javax.swing.JLabel();
+        viewLocationButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         logoutButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -250,6 +251,13 @@ public class AdminMenu extends javax.swing.JFrame {
 
         reportStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Status", "Menunggu", "Selesai" }));
 
+        viewLocationButton.setText("Lihat Lokasi");
+        viewLocationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewLocationButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -278,7 +286,9 @@ public class AdminMenu extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(viewImageButton)
-                                        .addGap(142, 142, 142)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(viewLocationButton)
+                                        .addGap(18, 18, 18)
                                         .addComponent(refreshButton))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
@@ -316,7 +326,8 @@ public class AdminMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(viewImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewLocationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -517,6 +528,31 @@ public class AdminMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cariIdFieldActionPerformed
 
+    private void viewLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewLocationButtonActionPerformed
+        try {   
+            int selectedRow = reportTable.getSelectedRow();
+            if (selectedRow >= 0) {
+                int reportId = (int) tableModel.getValueAt(selectedRow, 0);
+                String query = "SELECT * FROM laporan WHERE id_laporan = ?";
+                PreparedStatement preparedStatement = Database.connection.prepareStatement(query);
+                preparedStatement.setInt(1, reportId);
+                
+                ResultSet resultSet = preparedStatement.executeQuery();
+                
+                if (resultSet.next()) {
+                    double latitude = resultSet.getDouble("latitude");
+                    double longitude = resultSet.getDouble("longitude");
+                    WorldMap map = new WorldMap(latitude, longitude);
+                    map.setVisible(true);
+                    map.setLocationRelativeTo(null);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select an image from the table.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_viewLocationButtonActionPerformed
+
     private void displayImage(int id) {
         String query = "SELECT gambar_lokasi FROM laporan WHERE id_laporan = ?";
         try {
@@ -621,5 +657,6 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton uploadButton;
     private javax.swing.JLabel uploadLabel;
     private javax.swing.JButton viewImageButton;
+    private javax.swing.JButton viewLocationButton;
     // End of variables declaration//GEN-END:variables
 }

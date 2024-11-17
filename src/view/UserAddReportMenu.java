@@ -8,7 +8,9 @@ import model.Report;
 public class UserAddReportMenu extends javax.swing.JFrame {
     private int userId;
     private File image;
-
+    private WorldMap map;
+    double latitude = 0.0;
+    double longitude = 0.0;
     public UserAddReportMenu(int userId) {
         initComponents();
         this.userId = userId;
@@ -51,6 +53,8 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         reportTypeComboBox = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        locationButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -63,6 +67,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         reportLocationField.setBackground(new java.awt.Color(227, 227, 227));
+        reportLocationField.setForeground(new java.awt.Color(140, 140, 140));
         reportLocationField.setToolTipText("Masukkan Lokasi");
         reportLocationField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +76,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         });
 
         reportDescriptionField.setBackground(new java.awt.Color(227, 227, 227));
+        reportDescriptionField.setForeground(new java.awt.Color(140, 140, 140));
         reportDescriptionField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reportDescriptionFieldActionPerformed(evt);
@@ -136,6 +142,16 @@ public class UserAddReportMenu extends javax.swing.JFrame {
 
         reportTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Kategori", "Lampu Rusak", "Tidak Ada Lampu" }));
 
+        jLabel9.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
+        jLabel9.setText("Lokasi");
+
+        locationButton.setText("Pilih Lokasi");
+        locationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                locationButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -149,7 +165,11 @@ public class UserAddReportMenu extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(uploadButton))
+                                .addComponent(uploadButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(locationButton))
                             .addComponent(reportDescriptionField)
                             .addComponent(reportLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,7 +204,10 @@ public class UserAddReportMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(uploadButton))
+                    .addComponent(uploadButton)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(locationButton)))
                 .addGap(18, 18, 18)
                 .addComponent(laporkanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
@@ -229,11 +252,16 @@ public class UserAddReportMenu extends javax.swing.JFrame {
             String reportDescription = reportDescriptionField.getText();
             String location = reportLocationField.getText();
             File image = this.getImage();
-            
+            latitude = map.getLatitude();
+            longitude = map.getLongitude();
+            System.out.println("Koordinat: " + latitude + ", " + longitude);
             if (reportType.equals("") || location.equals("") || image == null) {
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
-            } else {
-                Report report = new Report(reportType, reportDescription, location, "menunggu", image, this.userId);
+            } else if (this.map == null || latitude == 0.0 || longitude == 0.0) {
+                JOptionPane.showMessageDialog(null, "Lokasi tidak boleh kosong");
+            }  
+            else {
+                Report report = new Report(reportType, reportDescription, location, "menunggu", image, this.userId, latitude, longitude);
                 report.createReport();
             }
             
@@ -242,6 +270,12 @@ public class UserAddReportMenu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Terdapat Kesalahan: " + e.getMessage());
         }
     }//GEN-LAST:event_laporkanButtonActionPerformed
+
+    private void locationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationButtonActionPerformed
+        map = new WorldMap();
+        map.setVisible(true);
+        map.setLocationRelativeTo(null);
+    }//GEN-LAST:event_locationButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,10 +335,12 @@ public class UserAddReportMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton kembaliButton;
     private javax.swing.JButton laporkanButton;
+    private javax.swing.JButton locationButton;
     private javax.swing.JTextField reportDescriptionField;
     private javax.swing.JTextField reportLocationField;
     private javax.swing.JComboBox<String> reportTypeComboBox;

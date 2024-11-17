@@ -134,7 +134,9 @@
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           <Component id="viewImageButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                          <Component id="viewLocationButton" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="refreshButton" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -188,6 +190,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="refreshButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="viewImageButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="viewLocationButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="33" max="32767" attributes="0"/>
               </Group>
@@ -284,6 +287,14 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="uploadLabel">
+        </Component>
+        <Component class="javax.swing.JButton" name="viewLocationButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lihat Lokasi"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewLocationButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
