@@ -8,7 +8,7 @@ import model.Report;
 public class UserAddReportMenu extends javax.swing.JFrame {
     private int userId;
     private File image;
-    private WorldMap map;
+    private WorldMap map = new WorldMap();
     double latitude = 0.0;
     double longitude = 0.0;
     public UserAddReportMenu(int userId) {
@@ -253,10 +253,9 @@ public class UserAddReportMenu extends javax.swing.JFrame {
             File image = this.getImage();
             latitude = map.getLatitude();
             longitude = map.getLongitude();
-            System.out.println("Koordinat: " + latitude + ", " + longitude);
             if (reportType.equals("") || location.equals("") || image == null) {
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
-            } else if (this.map == null || latitude == 0.0 || longitude == 0.0) {
+            } else if (latitude == 0.0 || longitude == 0.0) {
                 JOptionPane.showMessageDialog(null, "Lokasi tidak boleh kosong");
             }  
             else {
