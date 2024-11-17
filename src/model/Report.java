@@ -90,28 +90,6 @@ public class Report {
         }
     }
     
-    public void adminCreateReport(){
-        try {
-            FileInputStream imageFileInput = new FileInputStream(this.getImage());
-            
-            String query = "INSERT INTO laporan (jenis_laporan, isi_laporan, lokasi, status, gambar_lokasi) VALUES (?, ?, ?, ?, ?)";
-            
-            Database.preparedStatement = Database.connection.prepareStatement(query);
-            
-            Database.preparedStatement.setString(1, getReportType());
-            Database.preparedStatement.setString(2, getReportDescription());
-            Database.preparedStatement.setString(3, getLocation());
-            Database.preparedStatement.setString(4, getStatus());
-            Database.preparedStatement.setBinaryStream(5, imageFileInput, (int) this.getImage().length());
-            
-            Database.preparedStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Berhasil menambah data!");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Terdapat Kesalahan: " + e.getMessage());
-        }
-    }
-    
     public final void updateReport(){
         try {
             FileInputStream imageFileInput = new FileInputStream(this.getImage());
