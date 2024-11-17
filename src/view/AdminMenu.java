@@ -443,7 +443,7 @@ public class AdminMenu extends javax.swing.JFrame {
             int imageId = (int) tableModel.getValueAt(selectedRow, 0);
             displayImage(imageId);
         } else {
-            JOptionPane.showMessageDialog(null, "Please select an image from the table.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Pilih laporan terlebih dahulu.");
         }
     }//GEN-LAST:event_viewImageButtonActionPerformed
 
@@ -547,7 +547,7 @@ public class AdminMenu extends javax.swing.JFrame {
                     map.setLocationRelativeTo(null);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Please select an image from the table.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Pilih laporan terlebih dahulu.");
             }
         } catch (Exception e) {
         }
