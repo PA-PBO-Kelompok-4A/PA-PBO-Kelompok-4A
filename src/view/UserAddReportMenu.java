@@ -232,7 +232,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
             String location = reportLocationField.getText();
             File image = this.getImage();
             
-            if (reportType.equals("") || reportDescription.equals("") || location.equals("")) {
+            if (reportType.equals("") || location.equals("") || image == null) {
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else {
                 Report report = new Report(reportType, reportDescription, location, "menunggu", image, this.userId);

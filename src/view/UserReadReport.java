@@ -22,10 +22,10 @@ public class UserReadReport extends javax.swing.JFrame {
     private JLabel imageLabel;
 
     public UserReadReport(int userId) {
-        initComponents();
-        table();
         Database.connect();
+        initComponents();
         this.userId = userId;
+        table();
     }
 
     private UserReadReport() {
@@ -237,8 +237,11 @@ public class UserReadReport extends javax.swing.JFrame {
         tableModel.addColumn("Bukti Foto");
         tableModel.addColumn("Status Laporan");
         try {
-            Statement statement = Database.connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM laporan");
+            String query = "SELECT * FROM laporan WHERE user_id_user = ?";
+            PreparedStatement preparedStatement = Database.connection.prepareStatement(query);
+            preparedStatement.setInt(1, this.userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
             while (resultSet.next()){
                 int reportId = resultSet.getInt("id_laporan");
                 String reportDescription = resultSet.getString("isi_laporan");
