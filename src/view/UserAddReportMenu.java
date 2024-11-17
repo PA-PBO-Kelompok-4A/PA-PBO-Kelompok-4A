@@ -63,7 +63,6 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         reportLocationField.setBackground(new java.awt.Color(227, 227, 227));
-        reportLocationField.setForeground(new java.awt.Color(140, 140, 140));
         reportLocationField.setToolTipText("Masukkan Lokasi");
         reportLocationField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +71,6 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         });
 
         reportDescriptionField.setBackground(new java.awt.Color(227, 227, 227));
-        reportDescriptionField.setForeground(new java.awt.Color(140, 140, 140));
         reportDescriptionField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reportDescriptionFieldActionPerformed(evt);
