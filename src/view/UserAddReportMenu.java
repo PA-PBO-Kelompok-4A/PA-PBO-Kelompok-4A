@@ -29,7 +29,14 @@ public class UserAddReportMenu extends javax.swing.JFrame {
     }
     
     
-
+    private void clearInput(){
+        reportTypeComboBox.setSelectedIndex(0);
+        reportDescriptionField.setText("");
+        reportLocationField.setText("");
+        image = null;
+        latitude = 0.0;
+        longitude = 0.0;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -253,7 +260,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
             File image = this.getImage();
             latitude = map.getLatitude();
             longitude = map.getLongitude();
-            if (reportType.equals("") || location.equals("") || image == null) {
+            if (reportType.equals("Pilih Kategori") || location.equals("") || image == null) {
                 JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
             } else if (latitude == 0.0 || longitude == 0.0) {
                 JOptionPane.showMessageDialog(null, "Lokasi tidak boleh kosong");
@@ -261,6 +268,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
             else {
                 Report report = new Report(reportType, reportDescription, location, "menunggu", image, this.userId, latitude, longitude);
                 report.createReport();
+                clearInput();
             }
             
             
