@@ -181,7 +181,15 @@ public class AdminMenu extends javax.swing.JFrame {
             new String [] {
                 "ID", "Isi Laporan", "Lokasi Laporan", "Jenis Laporan", "Bukti Foto"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         reportTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 reportTableMouseClicked(evt);
@@ -352,7 +360,12 @@ public class AdminMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     void table(){
-        tableModel = new DefaultTableModel();
+        tableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         tableModel.setRowCount(0);
         tableModel.addColumn("ID");
         tableModel.addColumn("Isi Laporan");

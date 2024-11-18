@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import java.awt.event.MouseAdapter;
@@ -20,18 +16,12 @@ import org.jxmapviewer.viewer.TileFactoryInfo;
 import org.jxmapviewer.viewer.Waypoint;
 import org.jxmapviewer.viewer.WaypointPainter;
 
-/**
- *
- * @author acer
- */
 public class WorldMap extends javax.swing.JFrame {
     private Set<Waypoint> waypoints = new HashSet<>();
     private WaypointPainter<Waypoint> waypointPainter;
     private boolean confirmation;
     GeoPosition pos;
-    /**
-     * Creates new form WorldMap
-     */
+
     public WorldMap() {
         initComponents();
         init();

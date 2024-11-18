@@ -4,7 +4,6 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.PreparedStatement;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -16,7 +15,7 @@ import model.Database;
 
 public class UserReadReport extends javax.swing.JFrame {
     private int userId;
-    DefaultTableModel tableModel = new DefaultTableModel();
+    DefaultTableModel tableModel;
     private BufferedImage displayedImage;
     private double zoomFactor = 1.0;
     private JLabel imageLabel;
@@ -207,7 +206,15 @@ public class UserReadReport extends javax.swing.JFrame {
             new String [] {
                 "ID", "Isi Laporan", "Lokasi Laporan", "Jenis Laporan", "Bukti Foto", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         ScrollTable.setViewportView(reportTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,6 +237,12 @@ public class UserReadReport extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     void table(){
+        tableModel = new DefaultTableModel(){
+          @Override
+          public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         tableModel.addColumn("ID");
         tableModel.addColumn("Isi Laporan");
         tableModel.addColumn("Lokasi");
