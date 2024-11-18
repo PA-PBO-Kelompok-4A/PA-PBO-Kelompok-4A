@@ -427,6 +427,17 @@ public class AdminMenu extends javax.swing.JFrame {
                     "Gambar " + reportId, 
                     reportStatus});
                 reportTable.setModel(tableModel);
+            } else {
+                tableModel = new DefaultTableModel();
+                tableModel.setRowCount(0);
+                tableModel.addColumn("ID");
+                tableModel.addColumn("Isi Laporan");
+                tableModel.addColumn("Lokasi");
+                tableModel.addColumn("Jenis Laporan");
+                tableModel.addColumn("Bukti Foto");
+                tableModel.addColumn("Status Laporan");
+                reportTable.setModel(tableModel);
+                JOptionPane.showMessageDialog(null, "Laporan tidak ditemukan");
             }
         } catch (Exception e){
             
