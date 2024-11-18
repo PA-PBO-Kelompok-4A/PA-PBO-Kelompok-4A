@@ -20,11 +20,13 @@ public class WorldMap extends javax.swing.JFrame {
     private Set<Waypoint> waypoints = new HashSet<>();
     private WaypointPainter<Waypoint> waypointPainter;
     private boolean confirmation;
+    private int waypointCount = 0;
     GeoPosition pos;
 
     public WorldMap() {
         initComponents();
         init();
+        System.out.println(pos);
     }
     
     public WorldMap(double latitude, double longitude){
@@ -52,8 +54,13 @@ public class WorldMap extends javax.swing.JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2) {
+                    if (waypointCount > 0) {
+                        clearWaypoint();
+                        waypointCount = 0;
+                    }
                     pos = jXMapViewer.convertPointToGeoPosition(e.getPoint());
                     addWaypoint(pos);
+                    waypointCount += 1;
                     
                 int choice = JOptionPane.showConfirmDialog(null, "Apakah lokasinya sudah benar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
                 confirmation = (choice == JOptionPane.YES_OPTION);
@@ -61,6 +68,8 @@ public class WorldMap extends javax.swing.JFrame {
                     exitMap();
                 } else {
                     clearWaypoint();
+                    waypointCount = 0;
+                    pos = null;
                 }
                 }
             }
