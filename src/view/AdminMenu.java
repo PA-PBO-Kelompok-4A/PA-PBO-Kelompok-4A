@@ -539,7 +539,10 @@ public class AdminMenu extends javax.swing.JFrame {
         try {
             if (cariIdField.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "ID tidak boleh kosong");
-            } else {
+            } else if (cariIdField.getText().matches("[a-zA-Z]+")) {
+                JOptionPane.showMessageDialog(null, "Tolong masukkan angka");
+            }  
+            else {
                 tableSearching();
             }
         } catch (Exception e) {
