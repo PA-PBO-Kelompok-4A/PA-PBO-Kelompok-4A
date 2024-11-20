@@ -36,6 +36,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         image = null;
         latitude = 0.0;
         longitude = 0.0;
+        map = new WorldMap();
     }
     /**
      * This method is called from within the constructor to initialize the form.

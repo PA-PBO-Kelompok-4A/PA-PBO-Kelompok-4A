@@ -379,14 +379,14 @@ public class AdminMenu extends javax.swing.JFrame {
             while (resultSet.next()){
                 int reportId = resultSet.getInt("id_laporan");
                 String reportDescription = resultSet.getString("isi_laporan");
-                String reportLocation = resultSet.getString("alamat");
+                String reportAddress = resultSet.getString("alamat");
                 String reportType = resultSet.getString("jenis_laporan");
                 String reportStatus = resultSet.getString("status");
                 
                 tableModel.addRow(new Object[]{
                     reportId, 
                     reportDescription, 
-                    reportLocation, 
+                    reportAddress, 
                     reportType, 
                     "Gambar " + reportId, 
                     reportStatus});
@@ -415,14 +415,14 @@ public class AdminMenu extends javax.swing.JFrame {
             if (resultSet.next()) {
                 int reportId = resultSet.getInt("id_laporan");
                 String reportDescription = resultSet.getString("isi_laporan");
-                String reportLocation = resultSet.getString("alamat");
+                String reportAddress = resultSet.getString("alamat");
                 String reportType = resultSet.getString("jenis_laporan");
                 String reportStatus = resultSet.getString("status");
                 
                 tableModel.addRow(new Object[]{
                     reportId, 
                     reportDescription, 
-                    reportLocation, 
+                    reportAddress, 
                     reportType, 
                     "Gambar " + reportId, 
                     reportStatus});
