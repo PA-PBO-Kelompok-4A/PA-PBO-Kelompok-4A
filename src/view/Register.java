@@ -201,6 +201,12 @@ public class Register extends javax.swing.JFrame {
             
             if (email.equals("") || password.equals("") || fullName.equals("")) {
                 JOptionPane.showMessageDialog(null, "Data yang dimasukkan tidak boleh kosong!");
+            } else if (fullName.length() > 75) {
+                JOptionPane.showMessageDialog(null, "Nama lengkap tidak boleh lebih dari 75 karakter");
+            } else if (email.length() > 100) {
+                JOptionPane.showMessageDialog(null, "Email tidak boleh lebih dari 100 karakter");
+            } else if (password.length() > 25) {
+                JOptionPane.showMessageDialog(null, "Password tidak boleh lebih dari 25 karakter");
             } else{
                 if (User.emailFormatValidation(email)) {
                     if (!User.checkEmail(email) && !Admin.checkEmail(email)) {
