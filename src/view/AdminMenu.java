@@ -369,7 +369,7 @@ public class AdminMenu extends javax.swing.JFrame {
         tableModel.setRowCount(0);
         tableModel.addColumn("ID");
         tableModel.addColumn("Isi Laporan");
-        tableModel.addColumn("Lokasi");
+        tableModel.addColumn("Alamat");
         tableModel.addColumn("Jenis Laporan");
         tableModel.addColumn("Bukti Foto");
         tableModel.addColumn("Status Laporan");
@@ -379,7 +379,7 @@ public class AdminMenu extends javax.swing.JFrame {
             while (resultSet.next()){
                 int reportId = resultSet.getInt("id_laporan");
                 String reportDescription = resultSet.getString("isi_laporan");
-                String reportLocation = resultSet.getString("lokasi");
+                String reportLocation = resultSet.getString("alamat");
                 String reportType = resultSet.getString("jenis_laporan");
                 String reportStatus = resultSet.getString("status");
                 
@@ -401,7 +401,7 @@ public class AdminMenu extends javax.swing.JFrame {
         tableModel.setRowCount(0);
         tableModel.addColumn("ID");
         tableModel.addColumn("Isi Laporan");
-        tableModel.addColumn("Lokasi");
+        tableModel.addColumn("Alamat");
         tableModel.addColumn("Jenis Laporan");
         tableModel.addColumn("Bukti Foto");
         tableModel.addColumn("Status Laporan");
@@ -415,7 +415,7 @@ public class AdminMenu extends javax.swing.JFrame {
             if (resultSet.next()) {
                 int reportId = resultSet.getInt("id_laporan");
                 String reportDescription = resultSet.getString("isi_laporan");
-                String reportLocation = resultSet.getString("lokasi");
+                String reportLocation = resultSet.getString("alamat");
                 String reportType = resultSet.getString("jenis_laporan");
                 String reportStatus = resultSet.getString("status");
                 
@@ -432,7 +432,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 tableModel.setRowCount(0);
                 tableModel.addColumn("ID");
                 tableModel.addColumn("Isi Laporan");
-                tableModel.addColumn("Lokasi");
+                tableModel.addColumn("Alamat");
                 tableModel.addColumn("Jenis Laporan");
                 tableModel.addColumn("Bukti Foto");
                 tableModel.addColumn("Status Laporan");

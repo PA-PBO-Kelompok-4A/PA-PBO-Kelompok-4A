@@ -77,7 +77,7 @@
                                   <Component id="locationButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="reportDescriptionField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="reportLocationField" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
+                              <Component id="addressLocationField" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
                           </Group>
@@ -114,7 +114,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" pref="13" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="reportLocationField" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="addressLocationField" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -136,7 +136,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="reportLocationField">
+        <Component class="javax.swing.JTextField" name="addressLocationField">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e3" green="e3" red="e3" type="rgb"/>
@@ -144,7 +144,7 @@
             <Property name="toolTipText" type="java.lang.String" value="Masukkan Lokasi"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reportLocationFieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addressLocationFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="reportDescriptionField">

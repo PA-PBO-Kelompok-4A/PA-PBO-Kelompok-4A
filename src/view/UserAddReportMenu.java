@@ -32,7 +32,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
     private void clearInput(){
         reportTypeComboBox.setSelectedIndex(0);
         reportDescriptionField.setText("");
-        reportLocationField.setText("");
+        addressLocationField.setText("");
         image = null;
         latitude = 0.0;
         longitude = 0.0;
@@ -48,7 +48,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        reportLocationField = new javax.swing.JTextField();
+        addressLocationField = new javax.swing.JTextField();
         reportDescriptionField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -73,11 +73,11 @@ public class UserAddReportMenu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        reportLocationField.setBackground(new java.awt.Color(227, 227, 227));
-        reportLocationField.setToolTipText("Masukkan Lokasi");
-        reportLocationField.addActionListener(new java.awt.event.ActionListener() {
+        addressLocationField.setBackground(new java.awt.Color(227, 227, 227));
+        addressLocationField.setToolTipText("Masukkan Lokasi");
+        addressLocationField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reportLocationFieldActionPerformed(evt);
+                addressLocationFieldActionPerformed(evt);
             }
         });
 
@@ -176,7 +176,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(locationButton))
                             .addComponent(reportDescriptionField)
-                            .addComponent(reportLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addressLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -205,7 +205,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(reportLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addressLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -230,9 +230,9 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void reportLocationFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportLocationFieldActionPerformed
+    private void addressLocationFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressLocationFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_reportLocationFieldActionPerformed
+    }//GEN-LAST:event_addressLocationFieldActionPerformed
 
     private void reportDescriptionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportDescriptionFieldActionPerformed
         // TODO add your handling code here:
@@ -256,7 +256,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         try {
             String reportType = reportTypeComboBox.getSelectedItem().toString();
             String reportDescription = reportDescriptionField.getText();
-            String location = reportLocationField.getText();
+            String location = addressLocationField.getText();
             File image = this.getImage();
             latitude = map.getLatitude();
             longitude = map.getLongitude();
@@ -337,6 +337,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField addressLocationField;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -351,7 +352,6 @@ public class UserAddReportMenu extends javax.swing.JFrame {
     private javax.swing.JButton laporkanButton;
     private javax.swing.JButton locationButton;
     private javax.swing.JTextField reportDescriptionField;
-    private javax.swing.JTextField reportLocationField;
     private javax.swing.JComboBox<String> reportTypeComboBox;
     private javax.swing.JButton uploadButton;
     // End of variables declaration//GEN-END:variables

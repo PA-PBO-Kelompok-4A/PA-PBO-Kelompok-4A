@@ -204,7 +204,7 @@ public class UserReadReport extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Isi Laporan", "Lokasi Laporan", "Jenis Laporan", "Bukti Foto", "Status"
+                "ID", "Isi Laporan", "Alamat Laporan", "Jenis Laporan", "Bukti Foto", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -245,7 +245,7 @@ public class UserReadReport extends javax.swing.JFrame {
         };
         tableModel.addColumn("ID");
         tableModel.addColumn("Isi Laporan");
-        tableModel.addColumn("Lokasi");
+        tableModel.addColumn("Alamat");
         tableModel.addColumn("Jenis Laporan");
         tableModel.addColumn("Bukti Foto");
         tableModel.addColumn("Status Laporan");
@@ -258,7 +258,7 @@ public class UserReadReport extends javax.swing.JFrame {
             while (resultSet.next()){
                 int reportId = resultSet.getInt("id_laporan");
                 String reportDescription = resultSet.getString("isi_laporan");
-                String reportLocation = resultSet.getString("lokasi");
+                String reportLocation = resultSet.getString("alamat");
                 String reportType = resultSet.getString("jenis_laporan");
                 String reportStatus = resultSet.getString("status");
                 

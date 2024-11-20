@@ -8,17 +8,17 @@ public class Report {
     private int id;
     private String reportType;
     private String reportDescription;
-    private String location;
+    private String address;
     private String status;
     private File image;
     private int userId;
     private double latitude;
     private double longitude;
     
-    public Report(String reportType, String reportDescription, String location, String status, File image, int userId, double latitude, double longitude) throws IOException{
+    public Report(String reportType, String reportDescription, String address, String status, File image, int userId, double latitude, double longitude) throws IOException{
         this.reportType = reportType;
         this.reportDescription = reportDescription;
-        this.location = location;
+        this.address = address;
         this.status = status;
         this.image = image;
         this.userId = userId;
@@ -26,10 +26,10 @@ public class Report {
         this.longitude = longitude;
     }
     
-    public Report(String reportType, String reportDescription, String location, String status, File image) throws IOException{
+    public Report(String reportType, String reportDescription, String address, String status, File image) throws IOException{
         this.reportType = reportType;
         this.reportDescription = reportDescription;
-        this.location = location;
+        this.address = address;
         this.status = status;
         this.image = image;
     }
@@ -47,8 +47,8 @@ public class Report {
         return reportDescription;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAddress() {
+        return address;
     }
 
     public String getStatus() {
@@ -75,13 +75,13 @@ public class Report {
         try {
             FileInputStream imageFileInput = new FileInputStream(this.getImage());
             
-            String query = "INSERT INTO laporan (jenis_laporan, isi_laporan, lokasi, status, gambar_lokasi, latitude, longitude, user_id_user) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO laporan (jenis_laporan, isi_laporan, alamat, status, gambar_lokasi, latitude, longitude, user_id_user) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             
             Database.preparedStatement = Database.connection.prepareStatement(query);
             
             Database.preparedStatement.setString(1, getReportType());
             Database.preparedStatement.setString(2, getReportDescription());
-            Database.preparedStatement.setString(3, getLocation());
+            Database.preparedStatement.setString(3, getAddress());
             Database.preparedStatement.setString(4, getStatus());
             Database.preparedStatement.setBinaryStream(5, imageFileInput, (int) this.getImage().length());
             Database.preparedStatement.setDouble(6, this.latitude);
