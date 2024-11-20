@@ -457,7 +457,7 @@ public class AdminMenu extends javax.swing.JFrame {
         imageChooser.showOpenDialog(null);
         setImage(imageChooser.getSelectedFile());
         if (this.image != null) {
-            uploadLabel.setText("Berhasil di upload");
+            uploadLabel.setText("Foto berhasil di upload");
         }
     }//GEN-LAST:event_uploadButtonActionPerformed
 

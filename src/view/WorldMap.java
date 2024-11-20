@@ -26,7 +26,6 @@ public class WorldMap extends javax.swing.JFrame {
     public WorldMap() {
         initComponents();
         init();
-        System.out.println(pos);
     }
     
     public WorldMap(double latitude, double longitude){

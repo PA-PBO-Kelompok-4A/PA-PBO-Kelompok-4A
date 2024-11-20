@@ -92,7 +92,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         jLabel5.setText("Isi Laporan (opsional)");
 
         jLabel6.setFont(new java.awt.Font("Helvetica", 0, 12)); // NOI18N
-        jLabel6.setText("Lokasi ");
+        jLabel6.setText("Alamat");
 
         kembaliButton.setText("Kembali");
         kembaliButton.addActionListener(new java.awt.event.ActionListener() {
@@ -260,12 +260,15 @@ public class UserAddReportMenu extends javax.swing.JFrame {
             File image = this.getImage();
             latitude = map.getLatitude();
             longitude = map.getLongitude();
-            if (reportType.equals("Pilih Kategori") || location.equals("") || image == null) {
-                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
+            if (reportType.equals("Pilih Kategori")) {
+                JOptionPane.showMessageDialog(null, "Pilih jenis laporan");
+            } else if (location.equals("")) {
+                JOptionPane.showMessageDialog(null, "Alamat tidak boleh kosong");
+            } else if (image == null) {
+                JOptionPane.showMessageDialog(null, "Gambar tidak boleh kosong");
             } else if (latitude == 0.0 || longitude == 0.0) {
                 JOptionPane.showMessageDialog(null, "Lokasi tidak boleh kosong");
-            }  
-            else {
+            } else {
                 Report report = new Report(reportType, reportDescription, location, "menunggu", image, this.userId, latitude, longitude);
                 report.createReport();
                 clearInput();
@@ -282,6 +285,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         map.setLocationRelativeTo(null);
     }//GEN-LAST:event_locationButtonActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
