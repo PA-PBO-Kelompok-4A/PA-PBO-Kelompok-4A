@@ -63,6 +63,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         reportTypeComboBox = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         locationButton = new javax.swing.JButton();
+        uploadedLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -166,30 +167,30 @@ public class UserAddReportMenu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(uploadButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(locationButton))
-                            .addComponent(reportDescriptionField)
-                            .addComponent(addressLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(laporkanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(uploadButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(locationButton))
+                        .addComponent(reportDescriptionField)
+                        .addComponent(addressLocationField, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(reportTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(kembaliButton))
+                    .addComponent(kembaliButton)
+                    .addComponent(uploadedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(laporkanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,9 +216,11 @@ public class UserAddReportMenu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(uploadButton)))
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
+                .addComponent(uploadedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(laporkanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(kembaliButton)
                 .addGap(33, 33, 33))
         );
@@ -251,26 +254,33 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         imageChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Images", "jpg", "jpeg", "png", "gif"));
         imageChooser.showOpenDialog(null);
         setImage(imageChooser.getSelectedFile());
+        if (image != null) {
+            uploadedLabel.setText("Foto berhasil di upload");
+        }
     }//GEN-LAST:event_uploadButtonActionPerformed
 
     private void laporkanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laporkanButtonActionPerformed
         try {
             String reportType = reportTypeComboBox.getSelectedItem().toString();
             String reportDescription = reportDescriptionField.getText();
-            String location = addressLocationField.getText();
+            String address = addressLocationField.getText();
             File image = this.getImage();
             latitude = map.getLatitude();
             longitude = map.getLongitude();
             if (reportType.equals("Pilih Kategori")) {
                 JOptionPane.showMessageDialog(null, "Pilih jenis laporan");
-            } else if (location.equals("")) {
+            } else if (reportDescription.length() > 255) {
+                JOptionPane.showMessageDialog(null, "Isi laporan tidak boleh lebih dari 255 karakter");
+            } else if (address.length() > 255) {
+                JOptionPane.showMessageDialog(null, "Alamat laporan tidak boleh lebih dari 255 karakter");
+            } else if (address.equals("")) {
                 JOptionPane.showMessageDialog(null, "Alamat tidak boleh kosong");
             } else if (image == null) {
                 JOptionPane.showMessageDialog(null, "Gambar tidak boleh kosong");
             } else if (latitude == 0.0 || longitude == 0.0) {
                 JOptionPane.showMessageDialog(null, "Lokasi tidak boleh kosong");
             } else {
-                Report report = new Report(reportType, reportDescription, location, "menunggu", image, this.userId, latitude, longitude);
+                Report report = new Report(reportType, reportDescription, address, "menunggu", image, this.userId, latitude, longitude);
                 report.createReport();
                 clearInput();
             }
@@ -355,5 +365,6 @@ public class UserAddReportMenu extends javax.swing.JFrame {
     private javax.swing.JTextField reportDescriptionField;
     private javax.swing.JComboBox<String> reportTypeComboBox;
     private javax.swing.JButton uploadButton;
+    private javax.swing.JLabel uploadedLabel;
     // End of variables declaration//GEN-END:variables
 }

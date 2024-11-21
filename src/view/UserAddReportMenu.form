@@ -65,27 +65,20 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="uploadButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="locationButton" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="reportDescriptionField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="addressLocationField" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="uploadButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="locationButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="27" max="-2" attributes="0"/>
-                              <Component id="laporkanButton" min="-2" pref="281" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="reportDescriptionField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="addressLocationField" alignment="0" min="-2" pref="335" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel7" min="-2" pref="82" max="-2" attributes="0"/>
@@ -93,8 +86,14 @@
                           <Component id="reportTypeComboBox" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="kembaliButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="uploadedLabel" alignment="0" min="-2" pref="154" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="24" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="laporkanButton" min="-2" pref="281" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -126,9 +125,11 @@
                           <Component id="uploadButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  <Component id="uploadedLabel" min="-2" pref="12" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="laporkanButton" min="-2" pref="31" max="-2" attributes="0"/>
-                  <EmptySpace pref="57" max="32767" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
                   <Component id="kembaliButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
@@ -286,6 +287,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="locationButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="uploadedLabel">
         </Component>
       </SubComponents>
     </Container>
