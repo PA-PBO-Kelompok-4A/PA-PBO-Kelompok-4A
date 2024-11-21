@@ -19,10 +19,11 @@ import model.Report;
 
 public class AdminMenu extends javax.swing.JFrame {
     private File image;
-    DefaultTableModel tableModel;
+    private DefaultTableModel tableModel;
     private BufferedImage displayedImage;
     private double zoomFactor = 1.0;
     private JLabel imageLabel;
+    private JFrame imageFrame = null;
     /**
      * Creates new form Admin
      */
@@ -599,7 +600,11 @@ public class AdminMenu extends javax.swing.JFrame {
                 byte[] imageBytes = resultSet.getBytes("gambar_lokasi");
                 displayedImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
                 
-                JFrame imageFrame = new JFrame("ID Gambar: " + id);
+                if (imageFrame != null) {
+                    imageFrame.dispose();
+                }
+                
+                imageFrame = new JFrame("ID Gambar: " + id);
                 imageFrame.setSize(600, 600);
                 imageFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 imageLabel = new JLabel();
@@ -607,7 +612,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 imageFrame.setLocationRelativeTo(null);
                 
                 zoomFactor = calculateInitialZoomFactor(imageFrame.getWidth(), imageFrame.getHeight(), displayedImage);
-                zoomImage(); // Tampilkan gambar dengan zoomFactor awal
+                zoomImage();
 
                 imageFrame.setVisible(true);
             }
@@ -620,7 +625,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private double calculateInitialZoomFactor(int frameWidth, int frameHeight, BufferedImage image) {
         double widthRatio = (double) frameWidth / image.getWidth();
         double heightRatio = (double) frameHeight / image.getHeight();
-        return Math.min(widthRatio, heightRatio); // Mengambil rasio terkecil agar sesuai
+        return Math.min(widthRatio, heightRatio);
     }
     
     private void zoomImage() {

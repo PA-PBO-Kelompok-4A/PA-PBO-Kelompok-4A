@@ -37,6 +37,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
         latitude = 0.0;
         longitude = 0.0;
         map = new WorldMap();
+        uploadedLabel.setText("");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -250,6 +251,7 @@ public class UserAddReportMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_kembaliButtonActionPerformed
 
     private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
+        uploadedLabel.setText("");
         JFileChooser imageChooser = new JFileChooser();
         imageChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Images", "jpg", "jpeg", "png", "gif"));
         imageChooser.showOpenDialog(null);

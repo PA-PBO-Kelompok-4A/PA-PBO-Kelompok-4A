@@ -15,10 +15,11 @@ import model.Database;
 
 public class UserReadReport extends javax.swing.JFrame {
     private int userId;
-    DefaultTableModel tableModel;
+    private DefaultTableModel tableModel;
     private BufferedImage displayedImage;
     private double zoomFactor = 1.0;
     private JLabel imageLabel;
+    private JFrame imageFrame = null;
 
     public UserReadReport(int userId) {
         Database.connect();
@@ -303,7 +304,11 @@ public class UserReadReport extends javax.swing.JFrame {
                 byte[] imageBytes = resultSet.getBytes("gambar_lokasi");
                 displayedImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
                 
-                JFrame imageFrame = new JFrame("ID Gambar: " + id);
+                if (imageFrame != null) {
+                    imageFrame.dispose();
+                }
+                
+                imageFrame = new JFrame("ID Gambar: " + id);
                 imageFrame.setSize(600, 600);
                 imageFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 imageLabel = new JLabel();
@@ -311,8 +316,7 @@ public class UserReadReport extends javax.swing.JFrame {
                 imageFrame.setLocationRelativeTo(null);
                 
                 zoomFactor = calculateInitialZoomFactor(imageFrame.getWidth(), imageFrame.getHeight(), displayedImage);
-                zoomImage(); // Tampilkan gambar dengan zoomFactor awal
-
+                zoomImage();
                 imageFrame.setVisible(true);
             }
         } catch (Exception e) {
@@ -324,7 +328,7 @@ public class UserReadReport extends javax.swing.JFrame {
     private double calculateInitialZoomFactor(int frameWidth, int frameHeight, BufferedImage image) {
         double widthRatio = (double) frameWidth / image.getWidth();
         double heightRatio = (double) frameHeight / image.getHeight();
-        return Math.min(widthRatio, heightRatio); // Mengambil rasio terkecil agar sesuai
+        return Math.min(widthRatio, heightRatio);
 }
 
     private void zoomImage() {
