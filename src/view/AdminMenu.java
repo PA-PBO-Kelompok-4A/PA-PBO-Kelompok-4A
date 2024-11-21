@@ -529,20 +529,28 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         table();
+        reportStatusComboBox.setSelectedItem("Pilih Status");
     }//GEN-LAST:event_refreshButtonActionPerformed
 
     private void reportTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportTableMouseClicked
-
+        int selectedRow = reportTable.getSelectedRow();
+        if (selectedRow >= 0) {
+            String reportStatus = tableModel.getValueAt(selectedRow, 5).toString();
+            reportStatusComboBox.setSelectedItem(reportStatus);
+        }
     }//GEN-LAST:event_reportTableMouseClicked
 
     private void cariIdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariIdButtonActionPerformed
         try {
             if (cariIdField.getText().equals("")) {
+                reportStatusComboBox.setSelectedItem("Pilih Status");
                 JOptionPane.showMessageDialog(null, "ID tidak boleh kosong");
             } else if (cariIdField.getText().matches("[a-zA-Z]+")) {
+                reportStatusComboBox.setSelectedItem("Pilih Status");
                 JOptionPane.showMessageDialog(null, "Tolong masukkan angka");
             }  
             else {
+                reportStatusComboBox.setSelectedItem("Pilih Status");
                 tableSearching();
             }
         } catch (Exception e) {

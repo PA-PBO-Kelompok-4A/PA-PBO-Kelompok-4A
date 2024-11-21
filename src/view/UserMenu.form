@@ -107,7 +107,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Helvetica" size="36" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="LampuSafe"/>
+            <Property name="text" type="java.lang.String" value="LENTERA"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="logoutButton">

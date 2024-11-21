@@ -53,7 +53,7 @@ public class UserMenu extends javax.swing.JFrame {
         jLabel2.setText("Lingkungan gelap? Buat laporan segera!");
 
         jLabel4.setFont(new java.awt.Font("Helvetica", 1, 36)); // NOI18N
-        jLabel4.setText("LampuSafe");
+        jLabel4.setText("LENTERA");
 
         logoutButton.setText("Logout");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
